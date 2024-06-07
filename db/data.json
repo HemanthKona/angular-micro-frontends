@@ -1,9 +1,10 @@
 {
   "manifest": [
     {
+      "path": "red",
       "label": "Remote Module Red",
       "color": "red",
-      "remoteLink": "red"
+      "remote": "http://localhost:4201/remoteEntry.json"
     }
   ]
 }

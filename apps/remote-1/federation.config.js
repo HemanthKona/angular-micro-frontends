@@ -6,7 +6,7 @@ module.exports = withNativeFederation({
 
   exposes: {
     './Component': './apps/remote-1/src/app/app.component.ts',
-    './Route': './app/remote-1/src/app/app.routes'
+    './Routes': './apps/remote-1/src/app/app.routes'
   },
 
   shared: {

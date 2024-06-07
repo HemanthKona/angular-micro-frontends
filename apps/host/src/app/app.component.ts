@@ -17,7 +17,7 @@ import { Observable, tap } from 'rxjs';
         <ul>
           @for(module of modules$ | async; track module.path) {
           <li>
-            <a [routerLink]="module.path"> {{ module.label }}</a>
+            <a [routerLink]="module.path">{{module.path}} : {{ module.label }}</a>
           </li>
           }
         </ul>
@@ -25,7 +25,7 @@ import { Observable, tap } from 'rxjs';
       <div
         style="flex: 1; background-color: beige; width: auto; height: calc(100vh - 100px)"
       >
-        <router-outlet />
+        <router-outlet></router-outlet>
       </div>
     </div>
   `,
@@ -59,10 +59,7 @@ export class AppComponent {
               } as Route)
           ) ?? [];
 
-        
-
-        this.router.resetConfig(constructMicroFrontendRoutes)
-
+        this.router.resetConfig(constructMicroFrontendRoutes);
       })
     );
 }
