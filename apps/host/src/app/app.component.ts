@@ -18,9 +18,9 @@ import { AppService } from './app.service';
         <ul>
           @for(module of modules; track module.path) {
           <li>
-            <a [routerLink]="module.path"
-              >{{ module.path }} : {{ module.label }}</a
-            >
+            <a [routerLink]="module.path">
+              {{ module.label }}
+            </a>
           </li>
           }
         </ul>

@@ -6,18 +6,18 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet],
   template: `
-    <div class="red">
-      <h1>Red Remote 1</h1>
+    <div class="green">
+      <h1>Green</h1>
     </div>
   `,
   styles: `
-    .red {
+    .green {
       display: block;
-      background-color: rgb(202, 145, 145);
+      background-color: green;
       color: white;
     }
-  `,
-})
+  `
+  })
 export class AppComponent {
-  title = 'remote-1';
+  title = 'remote-2';
 }

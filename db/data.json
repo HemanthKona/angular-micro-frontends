@@ -5,6 +5,12 @@
       "label": "Remote Module Red",
       "color": "red",
       "remote": "http://localhost:4201/remoteEntry.json"
+    },
+    {
+      "path": "green",
+      "label": "Remote Module Green",
+      "color": "green",
+      "remote": "http://localhost:4202/remoteEntry.json"
     }
   ]
 }
