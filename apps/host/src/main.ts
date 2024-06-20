@@ -13,8 +13,10 @@ fetch('http://localhost:3000/manifest')
       {}
     );
 
+    console.log('Manifest:', manifest);
+
     return initFederation(manifest);
   })
-  .catch(err => console.error(err))
-  .then(_ => import('./bootstrap'))
-  .catch(err => console.error(err));
+  .catch((err) => console.error(err))
+  .then((_) => import('./bootstrap'))
+  .catch((err) => console.error(err));

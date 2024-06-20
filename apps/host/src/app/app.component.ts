@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { Route, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { Observable, tap } from 'rxjs';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +16,11 @@ import { Observable, tap } from 'rxjs';
     <div style="display: flex;">
       <div style="width: 200px;">
         <ul>
-          @for(module of modules$ | async; track module.path) {
+          @for(module of modules; track module.path) {
           <li>
-            <a [routerLink]="module.path">{{module.path}} : {{ module.label }}</a>
+            <a [routerLink]="module.path"
+              >{{ module.path }} : {{ module.label }}</a
+            >
           </li>
           }
         </ul>
@@ -39,27 +42,9 @@ import { Observable, tap } from 'rxjs';
   ],
 })
 export class AppComponent {
-  http = inject(HttpClient);
-  router = inject(Router);
+  appService = inject(AppService);
 
   title = 'host';
 
-  modules$: Observable<Array<{ label: string; color: string; path: string }>> =
-    this.http.get<any>('http://localhost:3000/manifest').pipe(
-      tap((modules) => {
-        const constructMicroFrontendRoutes =
-          modules?.map(
-            (elm) =>
-              ({
-                path: elm.path,
-                loadChildren: () =>
-                  loadRemoteModule(elm.path, './Routes').then(
-                    (m) => m.appRoutes
-                  ),
-              } as Route)
-          ) ?? [];
-
-        this.router.resetConfig(constructMicroFrontendRoutes);
-      })
-    );
+  modules = this.appService.modules;
 }
