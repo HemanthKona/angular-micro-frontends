@@ -3,25 +3,34 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
 
 ## Development server
+Use below commands:
+`npm run start:host`
+`npm run start:remote`
+`npm run start:remote2`
+`npm run db`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Steps to replicate the same setup:
+1. Create new Angula project `ng new . --create-application=false`
+2. Create new host application `ng g application host --inline-template --inline-style`
 
-## Code scaffolding
+3. Install angular-architects/native-federation `npm i angular-architects/native-federation`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+4. Set host app as a host `ng g @angular-architects/native-federation:init --project host --port 4200 --type dynamic-host`
 
-## Build
+5. create service to handle manifest loading and storing modules array
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+6. edit main.ts to fetch manifest
 
-## Running unit tests
+7. edit app component to fetch manifest and construct routes and call router.resetConfig with routes
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+8. run json server to serve module configuration `npx json-server data.json`
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+9. Add new remote app
+    9.1. generate new app `ng g app remote-#`
+    9.2. clean up remote-# app component styling and content
+    9.3. add new run command to package.json
+    9.4. configure default route for remote-#
+    9.5. set remote app as a remote `ng g @angular-architects/native-federation:init --project remote-# --port 4201 --type remote`
+    9.6. add remote-# to manifest in data.json
+    9.7. add route to expose in federation.config.js of the remote # (for example: './Routes': '/apps/remote-#/src/app/app.routes')
+Repeat step 9 for each new remote app.
