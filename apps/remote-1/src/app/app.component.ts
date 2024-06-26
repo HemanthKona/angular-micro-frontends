@@ -7,7 +7,7 @@ import { RouterOutlet } from '@angular/router';
   imports: [RouterOutlet],
   template: `
     <div class="red">
-      <h1>Red Remote 1</h1>
+      <h1>Remote Module: Red</h1>
     </div>
   `,
   styles: `
@@ -15,9 +15,10 @@ import { RouterOutlet } from '@angular/router';
       display: block;
       background-color: rgb(202, 145, 145);
       color: white;
+      padding: 24px;
     }
   `,
 })
 export class AppComponent {
-  title = 'remote-1';
+  title = 'remote-red';
 }
