@@ -2,15 +2,17 @@
   "manifest": [
     {
       "path": "red",
-      "label": "Remote Module Red",
+      "label": "Red Module",
       "color": "red",
-      "remote": "http://localhost:4201/remoteEntry.json"
+      "remote": "http://localhost:4201/remoteEntry.json",
+      "icon": "clock_loader_10"
     },
     {
       "path": "green",
-      "label": "Remote Module Green",
+      "label": "Green Module",
       "color": "green",
-      "remote": "http://localhost:4202/remoteEntry.json"
+      "remote": "http://localhost:4202/remoteEntry.json",
+      "icon": "home"
     }
   ]
 }
