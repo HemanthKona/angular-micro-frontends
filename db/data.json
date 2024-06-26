@@ -5,7 +5,7 @@
       "label": "Red Module",
       "color": "red",
       "remote": "http://localhost:4201/remoteEntry.json",
-      "icon": "clock_loader_10"
+      "icon": "home"
     },
     {
       "path": "green",
